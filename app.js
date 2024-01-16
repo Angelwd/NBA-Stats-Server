@@ -9,6 +9,9 @@ var mongoose = require ("mongoose")
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
+var playerRouter= require('./routes/player')
+var teamRouter= require('./routes/team')
+var oneTimeRouter = require('./routes/one-time')
 
 var app = express();
 
@@ -43,6 +46,9 @@ app.use(
 // app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter)
+app.use('/player', playerRouter);
+app.use('/team', teamRouter)
+app.use('/one-time', oneTimeRouter)
 
 mongoose
 
