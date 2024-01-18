@@ -28,18 +28,28 @@ router.get("/", (req, res, next) => {
       });
   });
 
-router.get("/:id", (req, res, next) => {
+router.get("/this-player/:id", (req, res, next) => {
   console.log("Hitting get route");
   Player.findById(req.params.id)
     .then((foundPlayers) => {
       console.log(foundPlayers);
-      res.status(201).send(foundPlayers);
+      res.status(201).json(foundPlayers);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).send(err);
+      res.status(500).json(err);
     });
 });
+
+router.get('/team/:code', (req, res, next) => {
+  Player.find({teamCode: req.params.code})
+    .then((foundPlayers) => {
+      res.json(foundPlayers)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 router.post("/update/:id", (req, res, next) => {
   Player.findByIdAndUpdate(req.params.id, req.body, { new: true })
