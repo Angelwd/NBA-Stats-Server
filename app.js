@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 var playerRouter= require('./routes/player')
 var teamRouter= require('./routes/team')
+var comparisonRouter = require('./routes/comparisons')
 // var oneTimeRouter = require('./routes/one-time')
 
 var app = express();
@@ -48,6 +49,7 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter)
 app.use('/player', playerRouter);
 app.use('/teams', teamRouter)
+app.use('/comparisons', comparisonRouter)
 // app.use('/one-time', oneTimeRouter)
 
 mongoose
